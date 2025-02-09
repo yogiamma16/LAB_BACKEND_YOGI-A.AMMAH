@@ -17,15 +17,15 @@ async function bootstrap() {
     new ValidationPipe({
       transform: true
     }))
-    app.enableCors({
-      origin: 'http://localhost:3001', // URL frontend
-      methods: 'GET,POST,PUT,DELETE',
-      allowedHeaders: 'Content-Type,Authorization',
-    });
+  app.enableCors({
+    origin: 'http://localhost:3001', // URL frontend
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+  });
 
   const config = new DocumentBuilder()
     .setTitle('LAB BACKEND')
-    .setDescription('YOGI A.AMMAH')
+    .setDescription('YOGI A.AMMAH - KELAS C')
     .setVersion('0.1')
     .addTag('Kelas C')
     .addBearerAuth()

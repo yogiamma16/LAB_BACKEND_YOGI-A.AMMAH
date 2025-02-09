@@ -4,7 +4,7 @@ export class RegisterUserDTO {
     @ApiProperty({
         description: "UserName",
         type: String,
-        example: "YOGIA.AMMAH"
+        example: "YOGI_AMMAH"
     })
     @IsString()
     @IsNotEmpty()
@@ -14,7 +14,7 @@ export class RegisterUserDTO {
     @ApiProperty({
         description: "Password",
         type: String,
-        example: "password"
+        example: "YOGI_AMMAH123"
     })
     @IsString()
     @IsNotEmpty()

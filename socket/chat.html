@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="iphone-15-frame">
+        <div class="status-bar">
+            <span class="time">18:48</span>
+            <div class="dynamic-island"></div>
+            <div class="right-icons">
+                <span class="signal">📶</span>
+                <span class="battery">🔋</span>
+            </div>
+        </div>
+        <div class="screen">
+            <div class="chat-header">
+                <img src="/img/profile.jpg" alt="Profile" width="30" height="30" style="border-radius: 50%; margin-right: 10px;">
+                <span id="room-name">Room</span>
+
+                <!-- Tombol Keluar -->
+                <button class="exit-btn" onclick="exitChat()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Chat Box -->
+            <div class="chat-messages" id="chat-box"></div>
+
+            <!-- Input Pesan -->
+            <div class="chat-input-container">
+                <label for="image-input" class="image-btn">
+                    <i class="fas fa-image"></i>
+                </label>
+                <input type="file" id="image-input" accept="image/*" style="display: none" onchange="previewImage()">
+                <input type="text" id="message" class="chat-input" placeholder="Type a message...">
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Preview Gambar -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <img id="preview-img" src="" alt="Preview Image">
+            <div class="modal-buttons">
+                <button onclick="cancelImage()">Batal</button>
+                <button onclick="sendImage()">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.io -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

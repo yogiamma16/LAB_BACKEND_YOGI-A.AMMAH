@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #e0e0e0;
+    margin: 0;
+}
+
+.iphone-15-frame {
+    width: 260px;
+    height: 544px;
+    border-radius: 35px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    border: 5px solid black;
+    background: url('/img/') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+
+/* Warna teks waktu menjadi hitam */
+
+.time {
+    color: black !important;
+    font-weight: bold;
+}
+
+.dynamic-island {
+    width: 80px;
+    height: 25px;
+    background: black;
+    border-radius: 20px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: url('/img/bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #343434;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-screen {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.input-box {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.join-btn {
+    width: 85%;
+    padding: 10px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.join-btn:hover {
+    background: #1ebe5d;
+}
