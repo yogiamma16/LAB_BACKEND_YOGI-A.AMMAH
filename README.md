@@ -116,8 +116,8 @@ graph TD
     A[User] -->|Masukkan Nama dan Room| B[Klik Join Chat]
     B --> C[Simpan data ke localStorage]
     C --> D[Arahkan ke chat.html]
-    
-    D --> E[Terhubung ke server WebSocket menggunakan Socket.IO]
+
+    D --> E[Terhubung ke WebSocket server menggunakan Socket.IO]
     E --> F[Kirim event 'join-room' ke server]
     F --> G[Server terima event 'join-room' dan simpan data pengguna]
     G --> H[Kirim event 'user-list' ke room untuk mengupdate daftar pengguna]
@@ -139,7 +139,7 @@ graph TD
     T --> U[Perbarui daftar pengguna di chat]
 
     V[Server handle koneksi & disconnect]
-    V --> W[Server proses event 'join-room', 'leave-room', dan siarkan pesan/gambar]
+    V --> W[Proses event 'join-room', 'leave-room', dan siarkan pesan/gambar]
 ```
 
 ## 4. 🔥 Teknologi yang Digunakan
