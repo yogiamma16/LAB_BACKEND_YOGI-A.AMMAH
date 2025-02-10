@@ -65,10 +65,63 @@ Berikut adalah struktur dasar dari proyek ini:
 
 ## 3.📜 Project Architecture Diagram
 ```mermaid
-graph TD;
-    A[Start] --> B[Step 1];
-    B --> C[Step 2];
-    C --> D[End];
+flowchart TD
+    A[User] -->|Register Request| B[AppController]
+    B --> C[AppService]
+    C --> D[Prisma (User Model)]
+    D --> E[Database]
+    E --> F[User Created]
+    B --> G[Response to User]
+
+    A -->|Login Request| B
+    B --> H[AppService]
+    H --> I[Prisma (User Model)]
+    I --> E[Database]
+    E --> J[Login Successful]
+    B --> K[Response to User]
+
+    A -->|Get Mahasiswa Request| B
+    B --> L[AppService]
+    L --> M[Prisma (Mahasiswa Model)]
+    M --> E[Database]
+    E --> N[Return Mahasiswa Data]
+    B --> O[Response to User]
+
+    A -->|Create Mahasiswa Request| B
+    B --> P[AppService]
+    P --> Q[Prisma (Mahasiswa Model)]
+    Q --> E[Database]
+    E --> R[Mahasiswa Created]
+    B --> S[Response to User]
+
+    A -->|Update Mahasiswa Request| B
+    B --> T[AppService]
+    T --> U[Prisma (Mahasiswa Model)]
+    U --> E[Database]
+    E --> V[Mahasiswa Updated]
+    B --> W[Response to User]
+
+    A -->|Delete Mahasiswa Request| B
+    B --> X[AppService]
+    X --> Y[Prisma (Mahasiswa Model)]
+    Y --> E[Database]
+    E --> Z[Mahasiswa Deleted]
+    B --> AA[Response to User]
+
+    A -->|Search Mahasiswa Request| B
+    B --> AB[AppService]
+    AB --> AC[Prisma (Mahasiswa Model)]
+    AC --> E[Database]
+    E --> AD[Return Search Results]
+    B --> AE[Response to User]
+
+    A -->|Auth Request| B
+    B --> AF[AppService]
+    AF --> AG[Prisma (User Model)]
+    AG --> E[Database]
+    E --> AH[Authenticated User]
+    B --> AI[Response to User]
+
 ```
 
 
