@@ -112,7 +112,7 @@ graph TD
 - **Websocket Chat (CRUD Operations)**
 
 ```mermaid
-flowchart TD
+graph TD
     A[User enters username & room] --> B[Click "Join Chat"]
     B --> C[Store data in localStorage]
     C --> D[Redirect to chat.html]
