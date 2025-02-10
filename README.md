@@ -113,30 +113,30 @@ graph TD
 
 ```mermaid
 graph TD
-    A[User enters username and room] --> B[Click Join Chat]
-    B --> C[Store data in localStorage]
-    C --> D[Redirect to chat.html]
-    D --> E[Connect to WebSocket server using Socket.IO]
+    A[Pembaca memasukkan nama pengguna dan room] --> B[Klik Join Chat]
+    B --> C[Simpan data ke localStorage]
+    C --> D[Arahkan ke chat.html]
+    D --> E[Terhubung ke server WebSocket menggunakan Socket.IO]
 
-    E --> F[Emit join-room event to server]
-    F --> G[Server stores user info in Map]
-    G --> H[Emit user-list to room]
+    E --> F[Kirim event join-room ke server]
+    F --> G[Server menyimpan info pengguna dalam Map]
+    G --> H[Kirim user-list ke room]
 
-    A --> I[User sends text message]
-    I --> J[Emit chat-room event to server]
-    J --> K[Server broadcasts room-message to room]
-    K --> L[Display message in chat]
+    A --> I[Pengguna mengirim pesan teks]
+    I --> J[Kirim event chat-room ke server]
+    J --> K[Server siarkan room-message ke room]
+    K --> L[Tampilkan pesan di chat]
 
-    A --> M[User sends image]
-    M --> N[Emit chat-image event to server]
-    N --> O[Server broadcasts room-image to room]
-    O --> P[Display image in chat]
+    A --> M[Pengguna mengirim gambar]
+    M --> N[Kirim event chat-image ke server]
+    N --> O[Server siarkan room-image ke room]
+    O --> P[Tampilkan gambar di chat]
 
-    A --> Q[User clicks Exit Chat]
-    Q --> R[Emit leave-room event to server]
-    R --> S[Server removes user from Map]
-    S --> T[Emit updated user-list to room]
-    T --> U[Update user list in chat]
+    A --> Q[Pengguna klik Exit Chat]
+    Q --> R[Kirim event leave-room ke server]
+    R --> S[Server hapus pengguna dari Map]
+    S --> T[Kirim user-list terbaru ke room]
+    T --> U[Perbarui daftar pengguna di chat]
 ```
 
 ## 4. 🔥 Teknologi yang Digunakan
