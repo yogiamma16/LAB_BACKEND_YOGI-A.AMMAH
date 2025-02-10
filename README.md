@@ -64,6 +64,7 @@ Berikut adalah struktur dasar dari proyek ini:
 ```
 
 ## 3.📜 Project Architecture Diagram
+
 ```mermaid
 flowchart TD
     A[User] -->|Register Request| B[AppController]
