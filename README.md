@@ -63,8 +63,8 @@ Berikut adalah struktur dasar dari proyek ini:
 ├── tsconfig.json
 ```
 
-## 3.📜 User Register & Login - Prisma Flow
-
+## 3.📜 Project Architecture Diagram
+- **User Register & Login**
 ```mermaid
 flowchart TD
     User -->|Register Request| AppController
@@ -77,7 +77,6 @@ flowchart TD
     CheckUserCredentials -->|Valid Credentials| LoginSuccess
     CheckUserCredentials -->|Invalid Credentials| InvalidCredentials
     AppController --> ResponseToUser
-
 
 ```
 
