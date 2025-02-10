@@ -80,6 +80,7 @@ flowchart TD
 ```
 
 - **GET, POST, PUT, DELETE (CRUD Operations)**
+
 ```mermaid
 flowchart TD
     User[User] -->|POST Request (Register)| AppController
