@@ -79,52 +79,52 @@ flowchart TD
     AppController --> ResponseToUser
 ```
 
-- **User Register & Login**
+- **GET, POST, PUT, DELETE (CRUD Operations)**
 ```mermaid
 flowchart TD
-    User[User] -->|GET Request (Get Hello)| AppController
+    User[User] -->|POST Request (Register)| AppController
     AppController --> AppService
-    AppService --> ResponseToUser
-    AppController -->|POST Request (Register)| AppService
     AppService --> PrismaUser
     PrismaUser --> Database
     Database --> NewUserCreated
     AppController --> ResponseToUser
-    AppController -->|POST Request (Login)| AppService
+
+    User[User] -->|POST Request (Login)| AppController
+    AppController --> AppService
     AppService --> PrismaUser
     PrismaUser --> Database
     Database --> UserAuthenticated
     AppController --> ResponseToUser
 
-    User -->|GET Request (Get Mahasiswa)| AppController
+    User[User] -->|GET Request (Get Mahasiswa)| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaList
     AppController --> ResponseToUser
 
-    User -->|GET Request (Get Mahasiswa by NIM)| AppController
+    User[User] -->|GET Request (Get Mahasiswa by NIM)| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaByNim
     AppController --> ResponseToUser
 
-    User -->|POST Request (Create Mahasiswa)| AppController
+    User[User] -->|POST Request (Create Mahasiswa)| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaCreated
     AppController --> ResponseToUser
 
-    User -->|PUT Request (Update Mahasiswa)| AppController
+    User[User] -->|PUT Request (Update Mahasiswa)| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaUpdated
     AppController --> ResponseToUser
 
-    User -->|DELETE Request (Delete Mahasiswa)| AppController
+    User[User] -->|DELETE Request (Delete Mahasiswa)| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
@@ -155,7 +155,7 @@ atau
 yarn install
 ```
 
-### **prisma/schema.prisma**
+### 📁**prisma/schema.prisma**
 Schema utama untuk database menggunakan **Prisma ORM**. Berisi definisi tabel dan hubungan antar entitas dalam database.
 - **Data Source**: Mengonfigurasi koneksi database, misalnya PostgreSQL atau MongoDB.
 - **Generator**: Menentukan bagaimana Prisma akan menghasilkan kode client.
