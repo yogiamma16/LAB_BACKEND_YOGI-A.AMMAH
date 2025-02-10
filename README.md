@@ -109,6 +109,32 @@ graph TD
 
 ```
 
+- **Websocket Chat (CRUD Operations)**
+
+```mermaid
+flowchart TD
+    A[User (client.html)] -->|Enter Username & Room| B[AppController (client.html)]
+    B -->|Join Chat (Join Room)| C[Socket.IO Connection (chat.html)]
+    C -->|Emit 'join-room'| D[ChatGateway (Backend)]
+    D -->|Join Room| E[Store User Info (Map)]
+    E -->|Emit 'user-list'| F[Send User List to Room]
+
+    A -->|Send Message| G[Socket.IO (chat.html)]
+    G -->|Emit 'chat-room'| D
+    D -->|Broadcast 'room-message'| G[Send Message to Room]
+
+    A -->|Send Image| H[Socket.IO (chat.html)]
+    H -->|Emit 'chat-image'| D
+    D -->|Broadcast 'room-image'| H[Send Image to Room]
+
+    A -->|Exit Chat| I[Exit Button (chat.html)]
+    I -->|Emit 'leave-room'| D
+    D -->|Leave Room| E[Remove User from Map]
+    E -->|Emit 'user-list'| F[Send Updated User List]
+
+    F -->|Receive Messages and Images| G[Display in Chat (chat.html)]
+```
+
 ## 4. 🔥 Teknologi yang Digunakan
 
 - **Nest.js** - Framework utama
