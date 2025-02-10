@@ -112,27 +112,34 @@ graph TD
 - **Websocket Chat (CRUD Operations)**
 
 ```mermaid
-flowchart TD
-    A[User (client.html)] -->|Enter Username & Room| B[AppController (client.html)]
-    B -->|Join Chat (Join Room)| C[Socket.IO Connection (chat.html)]
-    C -->|Emit 'join-room'| D[ChatGateway (Backend)]
-    D -->|Join Room| E[Store User Info (Map)]
-    E -->|Emit 'user-list'| F[Send User List to Room]
+graph TD
+    A[User] -->|Masukkan Nama dan Room| B[Klik Join Chat]
+    B --> C[Simpan data ke localStorage]
+    C --> D[Arahkan ke chat.html]
+    
+    D --> E[Terhubung ke server WebSocket menggunakan Socket.IO]
+    E --> F[Kirim event 'join-room' ke server]
+    F --> G[Server terima event 'join-room' dan simpan data pengguna]
+    G --> H[Kirim event 'user-list' ke room untuk mengupdate daftar pengguna]
 
-    A -->|Send Message| G[Socket.IO (chat.html)]
-    G -->|Emit 'chat-room'| D
-    D -->|Broadcast 'room-message'| G[Send Message to Room]
+    A --> I[User kirim pesan teks]
+    I --> J[Kirim event 'chat-room' ke server]
+    J --> K[Server broadcast 'room-message' ke room]
+    K --> L[Tampilkan pesan di chat]
 
-    A -->|Send Image| H[Socket.IO (chat.html)]
-    H -->|Emit 'chat-image'| D
-    D -->|Broadcast 'room-image'| H[Send Image to Room]
+    A --> M[User kirim gambar]
+    M --> N[Kirim event 'chat-image' ke server]
+    N --> O[Server broadcast 'room-image' ke room]
+    O --> P[Tampilkan gambar di chat]
 
-    A -->|Exit Chat| I[Exit Button (chat.html)]
-    I -->|Emit 'leave-room'| D
-    D -->|Leave Room| E[Remove User from Map]
-    E -->|Emit 'user-list'| F[Send Updated User List]
+    A --> Q[User klik Exit Chat]
+    Q --> R[Kirim event 'leave-room' ke server]
+    R --> S[Server hapus pengguna dari Map]
+    S --> T[Kirim user-list terbaru ke room]
+    T --> U[Perbarui daftar pengguna di chat]
 
-    F -->|Receive Messages and Images| G[Display in Chat (chat.html)]
+    V[Server handle koneksi & disconnect]
+    V --> W[Server proses event 'join-room', 'leave-room', dan siarkan pesan/gambar]
 ```
 
 ## 4. 🔥 Teknologi yang Digunakan
