@@ -6,62 +6,62 @@ Proyek ini dikembangkan menggunakan framework **Nest.js**, yang berbasis **TypeS
 
 ## 2. 📁 Struktur Folder Proyek
 
-Berikut adalah struktur dasar dari proyek ini:
+  Berikut adalah struktur dasar dari proyek ini:
 
-```
-├── node_modules
-├── prisma
-│   ├── schema.prisma
-├── socket
-│   ├── css/
-│   ├── img/
-│   ├── js/
-│   ├── chat.html
-│   ├── client.html
-├── src
-│   ├── main.ts
-│   ├── app.module.ts
-│   ├── prisma.ts
-│   ├── app.controller.ts
-│   ├── app.service.ts
-│   ├── auth.module.ts
-│   ├── chat
-│   │   │   ├── chat.gateway.ts
-│   │   │   ├── chat.gateway.spec.ts
-│   │   │   ├── chat.module.ts
-│   │   │   ├── chat.service.ts
-│   │   │   ├── chat.service.spec.ts
-│   ├── mahasiswa-profile
-│   │   │   ├── mahasiswa-profile.controller.ts
-│   │   │   ├── mahasiswa-profile.controller.spec.ts
-│   │   │   ├── mahasiswa-profile.module.ts
-│   │   │   ├── mahasiswa-profile.service.ts
-│   │   │   ├── mahasiswa-profile.service.spec.ts
-│   ├── decorator
-│   │   ├── user.decorator.ts
-│   ├── dto
-│   │   ├── create-mahasiswa.dto.ts
-│   │   ├── login-user.dto.ts
-│   │   ├── register-user.dto.ts
-│   ├── entity
-│   │   ├── user.entity.ts
-│   ├── guards
-│   │   ├── auth.guard.ts
-├── test
-│   ├── app.e2e-spec.ts
-│   ├── jest-e2e.json
-├── uploads
-├── .env
-├── .eslintrc.js
-├── .gitignore
-├── .prettierrc
-├── nest-cli.json
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.build.json
-├── tsconfig.json
-```
+  ```
+  ├── node_modules
+  ├── prisma
+  │   ├── schema.prisma
+  ├── socket
+  │   ├── css/
+  │   ├── img/
+  │   ├── js/
+  │   ├── chat.html
+  │   ├── client.html
+  ├── src
+  │   ├── main.ts
+  │   ├── app.module.ts
+  │   ├── prisma.ts
+  │   ├── app.controller.ts
+  │   ├── app.service.ts
+  │   ├── auth.module.ts
+  │   ├── chat
+  │   │   │   ├── chat.gateway.ts
+  │   │   │   ├── chat.gateway.spec.ts
+  │   │   │   ├── chat.module.ts
+  │   │   │   ├── chat.service.ts
+  │   │   │   ├── chat.service.spec.ts
+  │   ├── mahasiswa-profile
+  │   │   │   ├── mahasiswa-profile.controller.ts
+  │   │   │   ├── mahasiswa-profile.controller.spec.ts
+  │   │   │   ├── mahasiswa-profile.module.ts
+  │   │   │   ├── mahasiswa-profile.service.ts
+  │   │   │   ├── mahasiswa-profile.service.spec.ts
+  │   ├── decorator
+  │   │   ├── user.decorator.ts
+  │   ├── dto
+  │   │   ├── create-mahasiswa.dto.ts
+  │   │   ├── login-user.dto.ts
+  │   │   ├── register-user.dto.ts
+  │   ├── entity
+  │   │   ├── user.entity.ts
+  │   ├── guards
+  │   │   ├── auth.guard.ts
+  ├── test
+  │   ├── app.e2e-spec.ts
+  │   ├── jest-e2e.json
+  ├── uploads
+  ├── .env
+  ├── .eslintrc.js
+  ├── .gitignore
+  ├── .prettierrc
+  ├── nest-cli.json
+  ├── package-lock.json
+  ├── package.json
+  ├── README.md
+  ├── tsconfig.build.json
+  ├── tsconfig.json
+  ```
 
 ## 3.📜 Project Architecture Diagram
 - **User Register & Login**
@@ -156,25 +156,25 @@ graph TD
 
 ## 5.🔧 Instalasi Proyek Nest.js
 1. **Install nest js CLI dengan menggunakan perintah**
- ```sh
+   ```sh
    npm i -g @nestjs/cli
    ```
 2. **Inisialisasi proyek nest js dengan menggunakan perintah**
- ```sh
+   ```sh
    nest new nama_proyek
    ```
 3. **Masuk ke direktori dengan perintah**
- ```sh
+   ```sh
    cd nama_proyek
    ```
    Selanjutnya
- ```sh
+   ```sh
    code .
- ```
+   ```
 
 ## 6. 🚀 Penjelasan Setiap File
 ### 📂 **node_modules/** 📦
-Berisi **dependensi proyek** yang diinstal melalui `npm` atau `yarn`. 
+Berisi **dependensi proyek** yang diinstal melalui perintah Instalasi proyek nest.js. 
 
 
 ### 📁**prisma/schema.prisma**
@@ -462,7 +462,20 @@ Berisi **konfigurasi TypeScript** untuk proyek ini. Pengaturan utama yang terdap
    http://localhost:3000/api-docs
    ```
 
+5. **Websocket** 
+   ```sh
+   Buka Folder socket
+   ```
+   Selanjutnya
+   ```sh
+   Buka Client.hmtl
+   ```
+   dan
+   ```sh
+   jalankan Live server 
+   ```
+
 ## 8. Kesimpulan
 
-Laporan ini menjelaskan struktur dan isi dari proyek Nest.js, termasuk detail setiap file dan fungsinya. Diagram arsitektur juga ditambahkan dalam README.md untuk mempermudah pemahaman terhadap sistem. Dengan dokumentasi ini, diharapkan proyek dapat lebih mudah dipahami dan dikembangkan lebih lanjut.
+Laporan ini menjelaskan struktur dan isi dari proyek Nest.js, termasuk detail setiap file dan fungsinya. Diagram arsitektur juga ditambahkan dalam README.md untuk mempermudah pemahaman terhadap sistem. Dengan dokumentasi ini, diharapkan proyek dapat lebih mudah dipahami 
 
