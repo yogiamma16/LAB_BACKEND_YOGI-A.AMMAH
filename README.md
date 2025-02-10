@@ -68,20 +68,16 @@ Berikut adalah struktur dasar dari proyek ini:
 ```mermaid
 flowchart TD
     User -->|Register Request| AppController
-    AppController --> AppService
-    AppService --> PrismaUser
-    PrismaUser --> Database
-    Database --> NewUserCreated
-    AppController --> ResponseToUser
-
     User -->|Login Request| AppController
     AppController --> AppService
     AppService --> PrismaUser
     PrismaUser --> Database
+    Database --> NewUserCreated
     Database --> CheckUserCredentials
     CheckUserCredentials -->|Valid Credentials| LoginSuccess
     CheckUserCredentials -->|Invalid Credentials| InvalidCredentials
     AppController --> ResponseToUser
+
 
 ```
 
