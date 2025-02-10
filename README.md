@@ -130,6 +130,7 @@ flowchart TD
     PrismaMahasiswa --> Database
     Database --> MahasiswaDeleted
     AppController --> ResponseToUser
+
 ```
 
 ## 4. 🔥 Teknologi yang Digunakan
