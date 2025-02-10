@@ -113,29 +113,29 @@ graph TD
 
 ```mermaid
 graph TD
-    A[User enters username & room] --> B[Click "Join Chat"]
+    A[User enters username and room] --> B[Click Join Chat]
     B --> C[Store data in localStorage]
     C --> D[Redirect to chat.html]
     D --> E[Connect to WebSocket server using Socket.IO]
 
-    E --> F[Emit 'join-room' event to server]
+    E --> F[Emit join-room event to server]
     F --> G[Server stores user info in Map]
-    G --> H[Emit 'user-list' to room]
+    G --> H[Emit user-list to room]
 
     A --> I[User sends text message]
-    I --> J[Emit 'chat-room' event to server]
-    J --> K[Server broadcasts 'room-message' to room]
+    I --> J[Emit chat-room event to server]
+    J --> K[Server broadcasts room-message to room]
     K --> L[Display message in chat]
 
     A --> M[User sends image]
-    M --> N[Emit 'chat-image' event to server]
-    N --> O[Server broadcasts 'room-image' to room]
+    M --> N[Emit chat-image event to server]
+    N --> O[Server broadcasts room-image to room]
     O --> P[Display image in chat]
 
-    A --> Q[User clicks "Exit Chat"]
-    Q --> R[Emit 'leave-room' event to server]
+    A --> Q[User clicks Exit Chat]
+    Q --> R[Emit leave-room event to server]
     R --> S[Server removes user from Map]
-    S --> T[Emit updated 'user-list' to room]
+    S --> T[Emit updated user-list to room]
     T --> U[Update user list in chat]
 ```
 
