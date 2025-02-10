@@ -113,26 +113,30 @@ graph TD
 
 ```mermaid
 flowchart TD
-    A[User (client.html)] -->|Enter Username & Room| B[AppController (client.html)]
-    B -->|Join Chat (Join Room)| C[Socket.IO Connection (chat.html)]
-    C -->|Emit 'join-room'| D[ChatGateway (Backend)]
-    D -->|Join Room| E[Store User Info (Map)]
-    E -->|Emit 'user-list'| F[Send User List to Room]
+    A[User enters username & room] --> B[Click "Join Chat"]
+    B --> C[Store data in localStorage]
+    C --> D[Redirect to chat.html]
+    D --> E[Connect to WebSocket server using Socket.IO]
 
-    A -->|Send Message| G[Socket.IO (chat.html)]
-    G -->|Emit 'chat-room'| D
-    D -->|Broadcast 'room-message'| G[Send Message to Room]
+    E --> F[Emit 'join-room' event to server]
+    F --> G[Server stores user info in Map]
+    G --> H[Emit 'user-list' to room]
 
-    A -->|Send Image| H[Socket.IO (chat.html)]
-    H -->|Emit 'chat-image'| D
-    D -->|Broadcast 'room-image'| H[Send Image to Room]
+    A --> I[User sends text message]
+    I --> J[Emit 'chat-room' event to server]
+    J --> K[Server broadcasts 'room-message' to room]
+    K --> L[Display message in chat]
 
-    A -->|Exit Chat| I[Exit Button (chat.html)]
-    I -->|Emit 'leave-room'| D
-    D -->|Leave Room| E[Remove User from Map]
-    E -->|Emit 'user-list'| F[Send Updated User List]
+    A --> M[User sends image]
+    M --> N[Emit 'chat-image' event to server]
+    N --> O[Server broadcasts 'room-image' to room]
+    O --> P[Display image in chat]
 
-    F -->|Receive Messages and Images| G[Display in Chat (chat.html)]
+    A --> Q[User clicks "Exit Chat"]
+    Q --> R[Emit 'leave-room' event to server]
+    R --> S[Server removes user from Map]
+    S --> T[Emit updated 'user-list' to room]
+    T --> U[Update user list in chat]
 ```
 
 ## 4. 🔥 Teknologi yang Digunakan
