@@ -83,53 +83,28 @@ flowchart TD
 
 ```mermaid
 graph TD
-    User -->|POST Register| AppController
+    User[User] -->|POST Register| AppController
+    User[User] -->|POST Login| AppController
+    User[User] -->|GET Get Mahasiswa| AppController
+    User[User] -->|GET Get Mahasiswa by NIM| AppController
+    User[User] -->|POST Create Mahasiswa| AppController
+    User[User] -->|PUT Update Mahasiswa| AppController
+    User[User] -->|DELETE Delete Mahasiswa| AppController
+
     AppController --> AppService
     AppService --> PrismaUser
+    AppService --> PrismaMahasiswa
     PrismaUser --> Database
+    PrismaMahasiswa --> Database
+
     Database --> NewUserCreated
-    AppController --> ResponseToUser
-
-    User -->|POST Login| AppController
-    AppController --> AppService
-    AppService --> PrismaUser
-    PrismaUser --> Database
     Database --> UserAuthenticated
-    AppController --> ResponseToUser
-
-    User -->|GET Get Mahasiswa| AppController
-    AppController --> AppService
-    AppService --> PrismaMahasiswa
-    PrismaMahasiswa --> Database
     Database --> MahasiswaList
-    AppController --> ResponseToUser
-
-    User -->|GET Get Mahasiswa by NIM| AppController
-    AppController --> AppService
-    AppService --> PrismaMahasiswa
-    PrismaMahasiswa --> Database
     Database --> MahasiswaByNim
-    AppController --> ResponseToUser
-
-    User -->|POST Create Mahasiswa| AppController
-    AppController --> AppService
-    AppService --> PrismaMahasiswa
-    PrismaMahasiswa --> Database
     Database --> MahasiswaCreated
-    AppController --> ResponseToUser
-
-    User -->|PUT Update Mahasiswa| AppController
-    AppController --> AppService
-    AppService --> PrismaMahasiswa
-    PrismaMahasiswa --> Database
     Database --> MahasiswaUpdated
-    AppController --> ResponseToUser
-
-    User -->|DELETE Delete Mahasiswa| AppController
-    AppController --> AppService
-    AppService --> PrismaMahasiswa
-    PrismaMahasiswa --> Database
     Database --> MahasiswaDeleted
+
     AppController --> ResponseToUser
 
 ```
