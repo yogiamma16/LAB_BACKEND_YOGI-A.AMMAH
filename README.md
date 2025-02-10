@@ -73,7 +73,7 @@ flowchart TD
     D --> E[Database]
     E --> F[New User Created]
     B --> G[Response to User]
-    
+
     A -->|Login Request| B
     B --> H[AppService]
     H --> I[Prisma (User Model)]
