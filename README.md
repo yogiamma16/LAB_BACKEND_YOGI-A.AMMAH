@@ -82,50 +82,50 @@ flowchart TD
 - **GET, POST, PUT, DELETE (CRUD Operations)**
 
 ```mermaid
-flowchart TD
-    User[User] -->|POST Request (Register)| AppController
+graph TD
+    User -->|POST Register| AppController
     AppController --> AppService
     AppService --> PrismaUser
     PrismaUser --> Database
     Database --> NewUserCreated
     AppController --> ResponseToUser
 
-    User[User] -->|POST Request (Login)| AppController
+    User -->|POST Login| AppController
     AppController --> AppService
     AppService --> PrismaUser
     PrismaUser --> Database
     Database --> UserAuthenticated
     AppController --> ResponseToUser
 
-    User[User] -->|GET Request (Get Mahasiswa)| AppController
+    User -->|GET Get Mahasiswa| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaList
     AppController --> ResponseToUser
 
-    User[User] -->|GET Request (Get Mahasiswa by NIM)| AppController
+    User -->|GET Get Mahasiswa by NIM| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaByNim
     AppController --> ResponseToUser
 
-    User[User] -->|POST Request (Create Mahasiswa)| AppController
+    User -->|POST Create Mahasiswa| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaCreated
     AppController --> ResponseToUser
 
-    User[User] -->|PUT Request (Update Mahasiswa)| AppController
+    User -->|PUT Update Mahasiswa| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
     Database --> MahasiswaUpdated
     AppController --> ResponseToUser
 
-    User[User] -->|DELETE Request (Delete Mahasiswa)| AppController
+    User -->|DELETE Delete Mahasiswa| AppController
     AppController --> AppService
     AppService --> PrismaMahasiswa
     PrismaMahasiswa --> Database
