@@ -154,20 +154,28 @@ graph TD
 - **Socket.IO** - Real-time communication (WebSocket)
 - **JWT** - Otentikasi dan otorisasi pengguna
 
-## 5.🔧 Instalasi Proyek
-- **Nest.js**
-
+## 5.🔧 Instalasi Proyek Nest.js
+1. **Install nest js CLI dengan menggunakan perintah**
+ ```sh
+   npm i -g @nestjs/cli
+   ```
+2. **Inisialisasi proyek nest js dengan menggunakan perintah**
+ ```sh
+   nest new nama_proyek
+   ```
+3. **Masuk ke direktori dengan perintah**
+ ```sh
+   cd nama_proyek
+   ```
+   Selanjutnya
+ ```sh
+   code .
+ ```
 
 ## 6. 🚀 Penjelasan Setiap File
 ### 📂 **node_modules/** 📦
-Berisi **dependensi proyek** yang diinstal melalui `npm` atau `yarn`. Direktori ini tidak perlu diunggah ke repository karena bisa diinstal ulang menggunakan perintah:
-```sh
-npm install
-```
-atau
-```sh
-yarn install
-```
+Berisi **dependensi proyek** yang diinstal melalui `npm` atau `yarn`. 
+
 
 ### 📁**prisma/schema.prisma**
 Schema utama untuk database menggunakan **Prisma ORM**. Berisi definisi tabel dan hubungan antar entitas dalam database.
@@ -175,7 +183,7 @@ Schema utama untuk database menggunakan **Prisma ORM**. Berisi definisi tabel da
 - **Generator**: Menentukan bagaimana Prisma akan menghasilkan kode client.
 - **Model**: Definisi entitas dalam database, termasuk tipe data, relasi, dan constraints.
 
-Contoh struktur **schema.prisma**:
+Struktur **schema.prisma**:
 ```prisma
 generator client { 
   provider = "prisma-client-js"
@@ -420,11 +428,6 @@ Berisi **konfigurasi TypeScript** untuk proyek ini. Pengaturan utama yang terdap
 - **Path Aliases**: Menentukan alias path untuk mempermudah impor modul dalam proyek.
 
 
-## 5. Diagram Arsitektur
-
-Berikut adalah diagram arsitektur proyek ini:
-
-> **Diagram akan ditambahkan dalam README.md dalam bentuk markdown atau image.**
 
 ## 7. Cara Menjalankan Proyek
 
