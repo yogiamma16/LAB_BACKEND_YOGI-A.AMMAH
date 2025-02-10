@@ -150,7 +150,6 @@ graph TD
 - **TypeORM/Mongoose** - ORM untuk database
 - **Swagger** - Dokumentasi API
 - **Jest** - Unit testing
-- **Docker** - Containerisasi
 - **Socket.IO** - Real-time communication (WebSocket)
 - **JWT** - Otentikasi dan otorisasi pengguna
 
@@ -171,6 +170,34 @@ graph TD
    ```sh
    code .
    ```
+4. **Penginstalan Library Authentication**
+   ```sh
+   npm i –save jsonwebtoken @nestjs/jwt jsonwebtoken
+   ```
+   selanjutnya
+   ```sh
+   npm i –save-dev @types/bcrypt
+   ```
+5. **Membuat sebuah resource Bernama Profile**
+   ```sh
+   nest g res profile   
+   ```
+   Lalu pilih REST API  
+   Lalu ketik no dan tekan enter
+   ```sh
+   Perintah di atas akan membuat sebuah folder yang Bernama Profile yang berisikan file module, controller, dan services
+   ```
+   
+6. **Penginstalan library untuk file uploader**
+   ```sh
+   npm install @nestjs/platform-express
+   ```
+   dan
+   ```sh
+   npm install @types/express @types/multer
+   ```
+  
+
 
 ## 6. 🚀 Penjelasan Setiap File
 ### 📂 **node_modules/** 📦
