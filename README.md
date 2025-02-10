@@ -78,9 +78,7 @@ flowchart TD
     CheckUserCredentials -->|Invalid Credentials| InvalidCredentials
     AppController --> ResponseToUser
 
-- **CRUD Operations Flow - GET, POST, PUT, DELETE**
-```mermaid
-flowchart TD
+  flowchart TD
     User[User] -->|GET Request (Get Hello)| AppController
     AppController --> AppService
     AppService --> ResponseToUser
@@ -129,7 +127,9 @@ flowchart TD
     PrismaMahasiswa --> Database
     Database --> MahasiswaDeleted
     AppController --> ResponseToUser
+
 ```
+
 
 ## 4. 🔥 Teknologi yang Digunakan
 
