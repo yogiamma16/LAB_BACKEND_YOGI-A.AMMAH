@@ -150,10 +150,15 @@ graph TD
 - **TypeORM/Mongoose** - ORM untuk database
 - **Swagger** - Dokumentasi API
 - **Jest** - Unit testing
-- **Docker** (jika digunakan) - Containerisasi
+- **Docker** - Containerisasi
+- **Socket.IO** - Real-time communication (WebSocket)
+- **JWT** - Otentikasi dan otorisasi pengguna
 
-## 5. 🚀 Penjelasan Setiap File
+## 5.🔧 Instalasi Proyek
+- **Nest.js**
 
+
+## 6. 🚀 Penjelasan Setiap File
 ### 📂 **node_modules/** 📦
 Berisi **dependensi proyek** yang diinstal melalui `npm` atau `yarn`. Direktori ini tidak perlu diunggah ke repository karena bisa diinstal ulang menggunakan perintah:
 ```sh
@@ -421,7 +426,7 @@ Berikut adalah diagram arsitektur proyek ini:
 
 > **Diagram akan ditambahkan dalam README.md dalam bentuk markdown atau image.**
 
-## 6. Cara Menjalankan Proyek
+## 7. Cara Menjalankan Proyek
 
 1. **Clone Repository**
 
@@ -454,7 +459,7 @@ Berikut adalah diagram arsitektur proyek ini:
    http://localhost:3000/api-docs
    ```
 
-## 7. Kesimpulan
+## 8. Kesimpulan
 
 Laporan ini menjelaskan struktur dan isi dari proyek Nest.js, termasuk detail setiap file dan fungsinya. Diagram arsitektur juga ditambahkan dalam README.md untuk mempermudah pemahaman terhadap sistem. Dengan dokumentasi ini, diharapkan proyek dapat lebih mudah dipahami dan dikembangkan lebih lanjut.
 
