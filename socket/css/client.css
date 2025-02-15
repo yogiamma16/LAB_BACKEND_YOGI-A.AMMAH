@@ -31,12 +31,15 @@ body {
     font-size: 14px;
 }
 
-
-/* Warna teks waktu menjadi hitam */
-
 .time {
-    color: black !important;
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
     font-weight: bold;
+    color: rgb(56, 56, 56);
+    letter-spacing: 1px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
 }
 
 .dynamic-island {
@@ -98,4 +101,14 @@ h2 {
 
 .join-btn:hover {
     background: #1ebe5d;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
 }

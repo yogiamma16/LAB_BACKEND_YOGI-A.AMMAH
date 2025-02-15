@@ -1,11 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Res, UseGuards, Query } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { CreateMahasiswaDTO } from './dto/create-mahasiswa.dto';
 import { RegisterUserDTO } from './dto/register-user.dto';
 import { LoginUserDTO } from './dto/login-user.dto';
-import { plainToInstance } from 'class-transformer';
-import { Response } from 'express';
+import { AppService } from './app.service';  
 import { User } from './entity/user.entity';
 import { AuthGuard } from './guards/auth.guard';
 import { UserDecorator } from './decorator/user.decorator';
@@ -32,6 +30,8 @@ export class AppController {
   }
 
   @Get('mahasiswa')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   getMahasiswa() {
     return this.appService.getMahasiswa();
   }
@@ -64,6 +64,7 @@ export class AppController {
   deleteMahasiswa(@Param('nim') nim: string) {
     return this.appService.menghapusMahasiswa(nim);
   }
+
   @Get('cari-mahasiswa')
   @ApiQuery({ name: 'nama', required: false, type: String })
   @ApiQuery({ name: 'kelas', required: false, type: String })
@@ -73,6 +74,4 @@ export class AppController {
   ) {
     return this.appService.cariMahasiswa(namaMahasiswa, kelasMahasiswa);
   }
-
-
 }

@@ -21,6 +21,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   async handleDisconnect(socket: Socket) {
     console.log(`User disconnected: ${socket.id}`);
     this.users.delete(socket.id);
+    const user = this.users.get(socket.id);
+    if (user != null) return
+    this.updateUserList(user.room);
+
   }
 
   @SubscribeMessage('join-room')
@@ -59,7 +63,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     });
   }
 
-  
+
 
   @SubscribeMessage('chat-image')
   async handleImageMessage(socket: Socket, payload: { username: string, room: string, image: string }) {

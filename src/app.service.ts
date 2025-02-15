@@ -42,7 +42,7 @@ export class AppService {
       filter.kelas = { contains: kelasMahasiswa, mode: 'insensitive' };
     }
 
-    console.log("Filter Query yang dikirim ke Prisma:", filter); // Debugging log
+    console.log("Filter Query yang dikirim ke Prisma:", filter); 
 
     const hasilPencarian = await this.prisma.mahasiswa.findMany({
       where: filter,

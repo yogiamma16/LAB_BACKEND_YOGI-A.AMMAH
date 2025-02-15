@@ -18,23 +18,23 @@ export class AuthGuard implements CanActivate {
             throw new UnauthorizedException('Authorization header is missing');
         }
 
-        const token = authHeader.split(' ')[1];  // Format "Bearer <token>"
+        const token = authHeader.split(' ')[1]; 
 
         try {
             const payload: { id: number } = this.jwtService.verify(token);
-            console.log('Payload decoded from token:', payload);  // Log payload untuk verifikasi
+            console.log('Payload decoded from token:', payload); 
 
             const user = await this.appService.auth(payload.id);
-            console.log('User from auth service:', user);  // Log untuk memverifikasi user dari appService.auth()
+            console.log('User from auth service:', user);  
 
-            request.user = plainToInstance(User, user);  // Menyisipkan user ke dalam request
+            request.user = plainToInstance(User, user); 
 
         } catch (err) {
             if (err instanceof HttpException) throw err;
             throw new UnauthorizedException('Invalid token');
         }
 
-        return true;  // Request diizinkan
+        return true;  
     }
 }
 
