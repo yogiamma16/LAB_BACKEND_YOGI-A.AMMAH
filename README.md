@@ -6,70 +6,141 @@ Proyek ini dikembangkan menggunakan framework **Nest.js**, yang berbasis **TypeS
 
 ## 2. 📁 Struktur Folder Proyek
 
-Berikut adalah struktur dasar dari proyek ini:
+  Berikut adalah struktur dasar dari proyek ini:
 
-```
-├── node_modules
-├── prisma
-│   ├── schema.prisma
-├── socket
-│   ├── css/
-│   ├── img/
-│   ├── js/
-│   ├── chat.html
-│   ├── client.html
-├── src
-│   ├── main.ts
-│   ├── app.module.ts
-│   ├── prisma.ts
-│   ├── app.controller.ts
-│   ├── app.service.ts
-│   ├── auth.module.ts
-│   ├── chat
-│   │   │   ├── chat.gateway.ts
-│   │   │   ├── chat.gateway.spec.ts
-│   │   │   ├── chat.module.ts
-│   │   │   ├── chat.service.ts
-│   │   │   ├── chat.service.spec.ts
-│   ├── mahasiswa-profile
-│   │   │   ├── mahasiswa-profile.controller.ts
-│   │   │   ├── mahasiswa-profile.controller.spec.ts
-│   │   │   ├── mahasiswa-profile.module.ts
-│   │   │   ├── mahasiswa-profile.service.ts
-│   │   │   ├── mahasiswa-profile.service.spec.ts
-│   ├── decorator
-│   │   ├── user.decorator.ts
-│   ├── dto
-│   │   ├── create-mahasiswa.dto.ts
-│   │   ├── login-user.dto.ts
-│   │   ├── register-user.dto.ts
-│   ├── entity
-│   │   ├── user.entity.ts
-│   ├── guards
-│   │   ├── auth.guard.ts
-├── test
-│   ├── app.e2e-spec.ts
-│   ├── jest-e2e.json
-├── uploads
-├── .env
-├── .eslintrc.js
-├── .gitignore
-├── .prettierrc
-├── nest-cli.json
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.build.json
-├── tsconfig.json
-```
+  ```
+  ├── node_modules
+  ├── prisma
+  │   ├── schema.prisma
+  ├── socket
+  │   ├── css/
+  │   ├── img/
+  │   ├── js/
+  │   ├── chat.html
+  │   ├── client.html
+  ├── src
+  │   ├── main.ts
+  │   ├── app.module.ts
+  │   ├── prisma.ts
+  │   ├── app.controller.ts
+  │   ├── app.service.ts
+  │   ├── auth.module.ts
+  │   ├── chat
+  │   │   │   ├── chat.gateway.ts
+  │   │   │   ├── chat.gateway.spec.ts
+  │   │   │   ├── chat.module.ts
+  │   │   │   ├── chat.service.ts
+  │   │   │   ├── chat.service.spec.ts
+  │   ├── mahasiswa-profile
+  │   │   │   ├── mahasiswa-profile.controller.ts
+  │   │   │   ├── mahasiswa-profile.controller.spec.ts
+  │   │   │   ├── mahasiswa-profile.module.ts
+  │   │   │   ├── mahasiswa-profile.service.ts
+  │   │   │   ├── mahasiswa-profile.service.spec.ts
+  │   ├── decorator
+  │   │   ├── user.decorator.ts
+  │   ├── dto
+  │   │   ├── create-mahasiswa.dto.ts
+  │   │   ├── login-user.dto.ts
+  │   │   ├── register-user.dto.ts
+  │   ├── entity
+  │   │   ├── user.entity.ts
+  │   ├── guards
+  │   │   ├── auth.guard.ts
+  ├── test
+  │   ├── app.e2e-spec.ts
+  │   ├── jest-e2e.json
+  ├── uploads
+  ├── .env
+  ├── .eslintrc.js
+  ├── .gitignore
+  ├── .prettierrc
+  ├── nest-cli.json
+  ├── package-lock.json
+  ├── package.json
+  ├── README.md
+  ├── tsconfig.build.json
+  ├── tsconfig.json
+  ```
 
 ## 3.📜 Project Architecture Diagram
+- **User Register & Login**
 ```mermaid
-graph TD;
-    A[Start] --> B[Step 1];
-    B --> C[Step 2];
-    C --> D[End];
+flowchart TD
+    User -->|Register Request| AppController
+    User -->|Login Request| AppController
+    AppController --> AppService
+    AppService --> PrismaUser
+    PrismaUser --> Database
+    Database --> NewUserCreated
+    Database --> CheckUserCredentials
+    CheckUserCredentials -->|Valid Credentials| LoginSuccess
+    CheckUserCredentials -->|Invalid Credentials| InvalidCredentials
+    AppController --> ResponseToUser
+```
 
+- **GET, POST, PUT, DELETE (CRUD Operations)**
+
+```mermaid
+graph TD
+    User[User] -->|POST Register| AppController
+    User[User] -->|POST Login| AppController
+    User[User] -->|GET Get Mahasiswa| AppController
+    User[User] -->|GET Get Mahasiswa by NIM| AppController
+    User[User] -->|POST Create Mahasiswa| AppController
+    User[User] -->|PUT Update Mahasiswa| AppController
+    User[User] -->|DELETE Delete Mahasiswa| AppController
+
+    AppController --> AppService
+    AppService --> PrismaUser
+    AppService --> PrismaMahasiswa
+    PrismaUser --> Database
+    PrismaMahasiswa --> Database
+
+    Database --> NewUserCreated
+    Database --> UserAuthenticated
+    Database --> MahasiswaList
+    Database --> MahasiswaByNim
+    Database --> MahasiswaCreated
+    Database --> MahasiswaUpdated
+    Database --> MahasiswaDeleted
+
+    AppController --> ResponseToUser
+
+```
+
+- **Websocket Chat (CRUD Operations)**
+
+```mermaid
+graph TD
+    A[User] -->|Masukkan Nama dan Room| B[Klik Join Chat]
+    B --> C[Simpan data ke localStorage]
+    C --> D[Arahkan ke chat.html]
+
+    D --> E[Terhubung ke WebSocket server menggunakan Socket.IO]
+    E --> F[Kirim event 'join-room' ke server]
+    F --> G[Server terima event 'join-room' dan simpan data pengguna]
+    G --> H[Kirim event 'user-list' ke room untuk mengupdate daftar pengguna]
+
+    A --> I[User kirim pesan teks]
+    I --> J[Kirim event 'chat-room' ke server]
+    J --> K[Server broadcast 'room-message' ke room]
+    K --> L[Tampilkan pesan di chat]
+
+    A --> M[User kirim gambar]
+    M --> N[Kirim event 'chat-image' ke server]
+    N --> O[Server broadcast 'room-image' ke room]
+    O --> P[Tampilkan gambar di chat]
+
+    A --> Q[User klik Exit Chat]
+    Q --> R[Kirim event 'leave-room' ke server]
+    R --> S[Server hapus pengguna dari Map]
+    S --> T[Kirim user-list terbaru ke room]
+    T --> U[Perbarui daftar pengguna di chat]
+
+    V[Server handle koneksi & disconnect]
+    V --> W[Proses event 'join-room', 'leave-room', dan siarkan pesan/gambar]
+```
 
 ## 4. 🔥 Teknologi yang Digunakan
 
@@ -79,27 +150,67 @@ graph TD;
 - **TypeORM/Mongoose** - ORM untuk database
 - **Swagger** - Dokumentasi API
 - **Jest** - Unit testing
-- **Docker** (jika digunakan) - Containerisasi
+- **Socket.IO** - Real-time communication (WebSocket)
+- **JWT** - Otentikasi dan otorisasi pengguna
 
-## 5. 🚀 Penjelasan Setiap File
+## 5.🔧 Instalasi Proyek Nest.js
+1. **Install nest js CLI dengan menggunakan perintah**
+   ```sh
+   npm i -g @nestjs/cli
+   ```
+2. **Inisialisasi proyek nest js dengan menggunakan perintah**
+   ```sh
+   nest new nama_proyek
+   ```
+3. **Masuk ke direktori dengan perintah**
+   ```sh
+   cd nama_proyek
+   ```
+   Selanjutnya
+   ```sh
+   code .
+   ```
+4. **Penginstalan Library Authentication**
+   ```sh
+   npm i –save jsonwebtoken @nestjs/jwt jsonwebtoken
+   ```
+   selanjutnya
+   ```sh
+   npm i –save-dev @types/bcrypt
+   ```
+5. **Membuat sebuah resource Bernama Profile**
+   ```sh
+   nest g res profile   
+   ```
+   Lalu pilih REST API  
+   Lalu ketik no dan tekan enter
+   ```sh
+   Perintah di atas akan membuat sebuah folder yang Bernama Profile yang berisikan file module, controller, dan services
+   ```
+   
+6. **Penginstalan library untuk file uploader**
+   ```sh
+   npm install @nestjs/platform-express
+   ```
+   dan
+   ```sh
+   npm install @types/express @types/multer
+   ```
+  
 
+
+## 6. 🚀 Penjelasan Setiap File
 ### 📂 **node_modules/** 📦
-Berisi **dependensi proyek** yang diinstal melalui `npm` atau `yarn`. Direktori ini tidak perlu diunggah ke repository karena bisa diinstal ulang menggunakan perintah:
-```sh
-npm install
-```
-atau
-```sh
-yarn install
-```
+Berisi **dependensi proyek** yang diinstal melalui perintah Instalasi proyek nest.js. 
 
-### **prisma/schema.prisma**
+
+### 📁**prisma/schema.prisma**
 Schema utama untuk database menggunakan **Prisma ORM**. Berisi definisi tabel dan hubungan antar entitas dalam database.
 - **Data Source**: Mengonfigurasi koneksi database, misalnya PostgreSQL atau MongoDB.
 - **Generator**: Menentukan bagaimana Prisma akan menghasilkan kode client.
 - **Model**: Definisi entitas dalam database, termasuk tipe data, relasi, dan constraints.
 
-Contoh struktur **schema.prisma**:
+Struktur **schema.prisma**:
 ```prisma
 generator client { 
   provider = "prisma-client-js"
@@ -344,13 +455,8 @@ Berisi **konfigurasi TypeScript** untuk proyek ini. Pengaturan utama yang terdap
 - **Path Aliases**: Menentukan alias path untuk mempermudah impor modul dalam proyek.
 
 
-## 5. Diagram Arsitektur
 
-Berikut adalah diagram arsitektur proyek ini:
-
-> **Diagram akan ditambahkan dalam README.md dalam bentuk markdown atau image.**
-
-## 6. Cara Menjalankan Proyek
+## 7. Cara Menjalankan Proyek
 
 1. **Clone Repository**
 
@@ -383,7 +489,19 @@ Berikut adalah diagram arsitektur proyek ini:
    http://localhost:3000/api-docs
    ```
 
-## 7. Kesimpulan
+5. **Websocket** 
+   ```sh
+   Buka Folder socket
+   ```
+   Selanjutnya
+   ```sh
+   Buka Client.hmtl
+   ```
+   dan
+   ```sh
+   jalankan Live server 
+   ```
 
-Laporan ini menjelaskan struktur dan isi dari proyek Nest.js, termasuk detail setiap file dan fungsinya. Diagram arsitektur juga ditambahkan dalam README.md untuk mempermudah pemahaman terhadap sistem. Dengan dokumentasi ini, diharapkan proyek dapat lebih mudah dipahami dan dikembangkan lebih lanjut.
+## 8. Kesimpulan
 
+Laporan ini menjelaskan struktur dan isi dari proyek Nest.js, termasuk detail setiap file dan fungsinya. Diagram arsitektur juga ditambahkan dalam README.md untuk mempermudah pemahaman terhadap sistem. Dengan dokumentasi ini, diharapkan proyek dapat lebih mudah dipahami 
